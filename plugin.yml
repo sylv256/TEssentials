@@ -6,7 +6,7 @@ name: TEssentials
 main: TEssentials\Main
 
 #Version name/number of your plugin
-version: 0.0.1
+version: Indev 0.0.1
 
 #API version that your plugin supports. If your plugin's API is not compatible with that of the server, the server will refuse to load your plugin.
 #The API version is changed when:
