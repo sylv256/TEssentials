@@ -1,3 +1,3 @@
-# TEssentials
+# TEssentials (Indev 0.0.1)
 ## READ LICENSE BEFORE DISTRIBUTING, MODIFYING, USING PRIVATELY, OR USING FOR COMMERCIAL USE
 PocketMine-MP plugin. Supports 3.9.0+
