@@ -11,7 +11,7 @@ use raklib\protocol\AdvertiseSystem;
 
 class Main extends PluginBase {
 
-	public var $name = 'TEssentials';
+	public const $name = 'TEssentials';
 
 	public function onEnable() : void{
 		$this->getLogger()->info('Loading...');
