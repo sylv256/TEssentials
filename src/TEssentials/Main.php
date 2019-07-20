@@ -11,7 +11,7 @@ use raklib\protocol\AdvertiseSystem;
 
 class Main extends PluginBase {
 
-	$name = 'TEssentials';
+	public var $name = 'TEssentials';
 
 	public function onEnable() : void{
 		$this->getLogger()->info('Loading...');
@@ -19,6 +19,7 @@ class Main extends PluginBase {
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
 		$plr = $sender->getServer()::getPlayerExact($sender->getName());
+
 		switch($command->getName()){
 			case "spawn":
 				$sender->sendMessage('Teleporting to spawn...');
