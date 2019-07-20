@@ -12,6 +12,7 @@ use raklib\protocol\AdvertiseSystem;
 class Main extends PluginBase {
 	public function onEnable() : void{
 		$this->getLogger()->info('Loading...');
+		$this->getLogger()->info('Loaded!');
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
