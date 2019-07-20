@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-#%{Namespace}
+namespace TEssentials;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
@@ -10,9 +10,6 @@ use pocketmine\command\Command;
 use raklib\protocol\AdvertiseSystem;
 
 class Main extends PluginBase {
-
-	public const $name = 'TEssentials';
-
 	public function onEnable() : void{
 		$this->getLogger()->info('Loading...');
 	}
