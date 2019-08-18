@@ -35,14 +35,22 @@ website: https://github.com/TehcJS/TEssentials
 #Commands that your plugin has. You can capture the execution of these via the `onCommand()` method in your PluginBase, or the registered CommandExecutor for the command.
 #This node is optional and can be removed if your plugin will not have any commands.
 commands:
- #Name of the command. This is what people will type to execute the command.
- spawn:
-  #Description to show in the Help command
-  description: "Teleport to spawn."
-  #Usage message shown to the user if they type the command in incorrectly.
-  usage: "/spawn"
-  #Permission required to execute the command. This should be the name of a permission defined in the section below.
-  permission: "TEssentials.spawn"
+  #Name of the command. This is what people will type to execute the command.
+  spawn:
+    #Description to show in the Help command
+    description: "Teleport to spawn"
+    #Usage message shown to the user if they type the command in incorrectly.
+    usage: "/spawn"
+    #Permission required to execute the command. This should be the name of a permission defined in the section below.
+    permission: "TEssentials.warp.spawn"
+  warp:
+    description: "Teleport to a warp point"
+    usage: "/warp [name]"
+    permission: "TEssentials.teleport.warp"
+  tpo:
+    description: "Force teleport to a player"
+    usage: "/tpo [player]"
+    permission: "TEssentials.teleport.tpo"
 
 #Define permissions used in your plugin here. You can check whether permissibles have permissions in your plugin to allow or disallow actions such as command execution.
 permissions:
@@ -54,10 +62,60 @@ permissions:
   description: "Root permission node"
   #Child permission nodes. If the parent permission node is true, the children will have the values set here. If false, all child permissions will be inverted.
   children:
-   TEssentials.warp:
-    default: true
-    description: "Warp commands"
-    children:
-      TEssentials.warp.spawn:
-        default: true
-        description: "Grants access to \"/spawn\""
+    TEssentials.role:
+      default: true
+      description: "Root role permission node"
+      children:
+        TEssentials.role.owner:
+            default: false
+            description: "Owner role"
+            children:
+              TEssentials.blocks:
+        TEssentials.role.admin:
+          default: false
+          description: "Admin role"
+          children:
+            TEssentials.blocks:
+        TEssentials.role.moderator:
+          default: false
+          description: "Moderator role"
+        TEssentials.role.helper:
+          default: false
+          description: "Helper role"
+        TEssentials.role.member:
+          default: true
+          description: "Member role"
+        TEssentials.role.banned:
+          default: false
+          description: "Banned role"
+    TEssentials.blocks:
+      default: op
+      description: "Block permissions"
+      children:
+        TEssentials.blocks.break:
+          default: TEssentials.role.builder
+          description: "Break blocks"
+        TEssentials.blocks.place:
+          default: op
+          description: "Place blocks"
+    TEssentials.items:
+      default: op
+      description: "Item permissions"
+      children:
+        TEssentials.items.use:
+          default: TEssentials.role.builder
+          description: "Use items"
+    TEssentials.teleport:
+      default: op
+      description: "Teleport permissions"
+      children:
+        TEssentials.warp:
+          default: op
+          description: "Warp permissions"
+          children:
+            TEssentials.warp.spawn:
+              default: op
+              description: "Grants access to \"/spawn\""
+        TEssentials.tpo:
+          default: op
+          description: "Grants access to \"/tpo\""
